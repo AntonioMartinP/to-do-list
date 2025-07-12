@@ -32,6 +32,14 @@ const handleAddTask = (event) => {
       setTask('');
     }
   };
+  const handleToggleTask = (taskId) => {
+    setTasks(tasks.map(task =>
+      task.id === taskId ? { ...task, completed: !task.completed } : task
+    ));
+  }
+  const handleDeleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
   return (
     <>
     <h1>Aplicacion To-Do-List</h1>
@@ -40,19 +48,22 @@ const handleAddTask = (event) => {
       <button onClick={handleAddTask}>Enviar tarea</button>
     </form>
     <ul>
-      {/* {tasks.map((item, index) => (
-        <li key={index}>
-          {item}
-          <button onClick={() => {
-            const newList = tasks.filter((_, i) => i !== index);
-            
-            settasks(newList);
-          }}>Eliminar
-          </button>
-        </li>
-      ))} */}
+ 
       {tasks.map((task) => (
-          <li key={task.id}>{task.text}</li>
+          <li key={task.id} >
+            <input
+              type="checkbox"
+              checked={task.completed}
+              onChange={() => handleToggleTask(task.id)}
+            />
+            <span style={{ textDecoration: task.completed ? 'line-through' : 'none', color: task.completed ? 'red' : 'black' }}>
+            {task.text}
+            </span>
+            <button className="delete-button"
+              onClick={() => handleDeleteTask(task.id)}>
+                Eliminar
+            </button>
+          </li>
         ))}
     </ul>
     </>
