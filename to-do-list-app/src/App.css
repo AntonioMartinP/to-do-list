@@ -30,7 +30,7 @@ button {
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  margin-left:20px;
+  margin-left: 20px;
 }
 
 button:hover {
@@ -54,11 +54,12 @@ li {
 input[type="checkbox"] {
   margin-right: 10px;
 }
+
 .pending-tasks {
   font-size: 16px;
   color: #555;
   margin-bottom: 20px;
- 
+
 }
 
 .empty-message {
